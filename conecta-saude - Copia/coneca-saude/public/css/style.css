@@ -1,0 +1,498 @@
+/*=============================================
+=            Variáveis de Cores e Reset CSS            =
+=============================================*/
+
+/* Variáveis de Cores para facilitar a manutenção */
+:root {
+    --primary-color: #0028d8; /*MidnightBlue para elementos principais (botões, cabeçalhos) */
+    --secondary-color: #007bff; /* Azul para elementos secundários (links, alguns botões) */
+    --accent-color: #ffc107; /* Amarelo para destaques (dia atual no calendário) */
+    --text-color: #333; /* Cor padrão do texto */
+    --bg-color: #fff; /* Cor de fundo geral do corpo */
+    --light-gray: #7d9fc2; /* Cinza claro para bordas e fundos sutis */
+    --border-color: #ced4da; /* Cor padrão para bordas de inputs */
+    --danger-color: #dc3545; /* Vermelho para mensagens de erro/perigo */
+    --success-color: #28a745; /* Verde para mensagens de sucesso */
+}
+
+/* Reset Básico para padronizar o estilo em diferentes navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho total */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna e legível */
+    line-height: 1.6; /* Espaçamento entre linhas para melhor leitura */
+    color: var(--text-color);
+    background-color: var(--border-color);
+    display: flex; /* Para centralizar o conteúdo e manter o rodapé no final */
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o corpo ocupe toda a altura da viewport */
+}
+
+.container {
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o container na página */
+    padding: 0 20px; /* Espaçamento interno nas laterais */
+}
+
+/*=============================================
+=            Estilos Gerais de Componentes            =
+=============================================*/
+
+/* Estilos dos Botões */
+.btn {
+    display: inline-block; /* Permite definir largura/altura e paddings */
+    padding: 12px 25px;
+    border-radius: 5px; /* Cantos arredondados */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves ao interagir */
+    border: none; /* Remove borda padrão do botão */
+    cursor: pointer; /* Muda o cursor para indicar clicável */
+    margin: 10px; /* Espaçamento entre botões */
+}
+
+.btn.primary-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn.primary-btn:hover {
+    background-color: #218838; /* Escurece no hover */
+    transform: translateY(-2px); /* Efeito de "levantar" */
+}
+
+.btn.secondary-btn {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.btn.secondary-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.btn-sm { /* Botão menor, usado no prontuário por exemplo */
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    margin: 5px;
+}
+
+.btn:disabled { /* Estilo para botões desabilitados */
+    background-color: var(--light-gray);
+    color: #666;
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.7;
+}
+
+/* Estilos de Formulários e Campos */
+.form-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Sombra para destacar o formulário */
+    max-width: 500px;
+    margin: 50px auto; /* Centraliza o container do formulário */
+    text-align: center;
+}
+
+.form-container h2 {
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Alinha labels à esquerda */
+}
+
+.form-group label {
+    display: block; /* Garante que a label ocupe toda a largura */
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+    width: 100%; /* Ocupa 100% da largura do pai */
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-color); /* Borda primária ao focar */
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25); /* Sombra suave ao focar */
+    outline: none; /* Remove o outline padrão do navegador */
+}
+
+.form-group textarea {
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+    min-height: 100px;
+}
+
+/*=============================================
+=            Layouts e Páginas Específicas            =
+=============================================*/
+
+/* Estilos do Cabeçalho Principal (main-header) - Presente em todas as páginas */
+.main-header {
+    background-color: var(--primary-color);
+    color: #fff; /* Texto branco no cabeçalho */
+    padding: 1rem 0; /* Espaçamento superior e inferior */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil para profundidade */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between; /* Alinha logo/título à esquerda e navegação à direita */
+    align-items: center; /* Centraliza verticalmente os itens */
+}
+
+.main-header .logo {
+    height: 200px; /* Altura do logo */
+    margin-right: 15px; /* Espaçamento à direita do logo */
+}
+
+.main-header h1 {
+    font-size: 2.2rem;
+    margin: 0; /* Remove margem padrão do h1 */
+}
+
+.main-header nav ul {
+    list-style: none; /* Remove marcadores de lista */
+    display: flex; /* Alinha os itens da navegação horizontalmente */
+}
+
+.main-header nav ul li {
+    margin-left: 20px; /* Espaçamento entre os itens da navegação */
+}
+
+.main-header nav ul li a {
+    color: #fff;
+    text-decoration: none; /* Remove sublinhado dos links */
+    font-weight: bold; /* Texto em negrito */
+    transition: color 0.3s ease; /* Transição suave de cor ao passar o mouse */
+}
+
+.main-header nav ul li a:hover {
+    color: var(--accent-color); /* Muda a cor ao passar o mouse */
+}
+
+
+/* Estilos da Seção Hero (hero-section) - APENAS na index.html */
+.hero-section {
+    /* Imagem de fundo e gradiente para melhorar a visibilidade do texto */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../assets/images/health_background.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+    flex-grow: 1; /* Permite que esta seção ocupe o espaço restante */
+    display: flex; /* Para centralizar o conteúdo verticalmente */
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section h2 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra no texto para destaque */
+}
+
+.hero-section p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto; /* Centraliza o parágrafo */
+}
+
+
+/* Estilos do Dashboard (dashboard-container) - APENAS na dashboard.html */
+.dashboard-container {
+    padding: 40px 20px;
+    flex-grow: 1; /* Ocupa o espaço restante na coluna flex */
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--light-gray); /* Linha divisória */
+    padding-bottom: 20px;
+}
+
+.dashboard-header h2 {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+}
+
+.dashboard-grid {
+    display: grid;
+    /* Colunas que se ajustam automaticamente, mínimo de 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Espaçamento entre os cartões */
+}
+
+.dashboard-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px); /* Efeito de "levantar" no hover */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15); /* Sombra mais intensa no hover */
+}
+
+.dashboard-card h3 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.dashboard-card p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.dashboard-card .btn {
+    width: 80%; /* Botões dentro do card ocupam 80% da largura */
+    padding: 10px;
+    font-size: 1rem;
+}
+
+
+/* Estilos do Prontuário Médico (medical-record-container) - APENAS na medical_record.html */
+.medical-record-container {
+    padding: 40px 20px;
+    flex-grow: 1; /* Ocupa o espaço restante na coluna flex */
+}
+
+.medical-record-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    font-size: 2.8rem;
+}
+
+.record-section {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.record-section h3 {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--light-gray); /* Linha divisória para sub-seções */
+    padding-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.record-item {
+    margin-bottom: 15px;
+}
+
+.record-item strong {
+    color: var(--primary-color);
+    margin-right: 5px; /* Espaçamento após o negrito */
+}
+
+
+/* Estilos do Calendário (calendar-container) - APENAS na calendar.html */
+.calendar-container {
+    padding: 40px 20px;
+    flex-grow: 1; /* Ocupa o espaço restante na coluna flex */
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.calendar-header h2 {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+}
+
+#currentMonthYear {
+    font-size: 1.8rem; /* Aumenta o tamanho do texto do mês/ano */
+    color: var(--text-color);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colunas para os dias da semana */
+    gap: 10px; /* Espaçamento entre as células do calendário */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.08);
+}
+
+.day-name, .calendar-day {
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.day-name {
+    background-color: var(--light-gray);
+    color: var(--text-color);
+}
+
+.calendar-day {
+    background-color: #f0f0f0; /* Fundo padrão dos dias */
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    position: relative; /* Para posicionar o ponto de evento */
+    min-height: 80px; /* Altura mínima para cada célula do dia */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empurra o número para cima e o ponto para baixo */
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.calendar-day:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.calendar-day.current-month {
+    background-color: #fff; /* Dias do mês atual têm fundo branco */
+}
+
+.calendar-day.today {
+    background-color: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px var(--accent-color); /* Borda extra para destacar o dia atual */
+}
+
+.calendar-day.has-event {
+    border: 2px solid var(--secondary-color); /* Borda azul para dias com evento */
+}
+
+.event-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--secondary-color);
+    border-radius: 50%; /* Ponto de evento */
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* Estilos do Rodapé (main-footer) - Presente em todas as páginas */
+.main-footer {
+    background-color: var(--text-color); /* Fundo escuro */
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto; /* Empurra o rodapé para o final da página */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+.main-footer p {
+    margin-bottom: 5px;
+}
+
+/*=============================================
+=            Responsividade            =
+=============================================*/
+
+/* Estilos para telas menores (smartphones e tablets) */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column; /* Empilha logo e navegação */
+        text-align: center;
+    }
+
+    .main-header nav ul {
+        margin-top: 15px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-header nav ul li {
+        margin: 5px 0; /* Espaçamento vertical para os itens de navegação */
+    }
+
+    .hero-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+    }
+
+    .form-container {
+        margin: 20px; /* Margem menor em telas pequenas */
+        padding: 25px;
+    }
+
+    .calendar-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Ajusta colunas do calendário */
+    }
+
+    .calendar-day {
+        min-height: 60px; /* Reduz altura dos dias do calendário */
+        font-size: 0.9rem;
+    }
+    .calendar-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Estilos para telas ainda menores (smartphones muito pequenos) */
+@media (max-width: 480px) {
+    .main-header h1 {
+        font-size: 1.8rem;
+    }
+    .hero-section h2 {
+        font-size: 2rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}

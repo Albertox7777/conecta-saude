@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conecta Saúde - Calendário</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../assets/images/logo.png" type="image/png">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <img src="assets/logo.png" alt="Logo Conecta Saúde" class="logo">
+            <h1>CONECTA SAÚDE</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="medical_record.html">Prontuário</a></li>
+                    <li><a href="calendar.html">Calendário</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="calendar-container">
+        <div class="container">
+            <div class="calendar-header">
+                <h2>Calendário de Agendamentos</h2>
+                <div>
+                    <button class="btn secondary-btn" id="prevMonth">Mês Anterior</button>
+                    <span id="currentMonthYear" style="font-size: 1.2rem; font-weight: bold; margin: 0 15px;">Maio 2025</span>
+                    <button class="btn secondary-btn" id="nextMonth">Próximo Mês</button>
+                </div>
+            </div>
+
+            <div class="calendar-grid" id="calendarGrid">
+                </div>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="btn primary-btn">Novo Agendamento</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Conecta Saúde. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
